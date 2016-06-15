@@ -12,7 +12,8 @@
 */
 
 Route::get('/',['as'=> 'home.index',function () {
-    return view('index');
+	$data =['jpg'=>'home-bg.jpg)'];
+    return view('index',$data);
 }]);
 
 Route::get('/about',['as'=> 'about.index',function () {
