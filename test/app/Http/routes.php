@@ -17,7 +17,7 @@ Route::get('/',['as'=> 'home.index',function () {
 }]);
 
 Route::get('/about',['as'=> 'about.index',function () {
-    return view('about');
+    return view('about.index');
 }]);
 
 Route::get('/hot',['as'=> 'post.hot',function () {
@@ -32,76 +32,29 @@ Route::post('posts',['as'=> 'posts.store',function () {
     return 'posts.store';
 }]);
 
-Route::get('posts',['as'=> 'posts.index',function () {
-    return 'posts.index';
-}]);
+Route::get('posts',['as'=> 'posts.index','uses' =>
+'PostsController@index'
+]);
 
-Route::get('posts/create',['as'=> 'posts.create',function () {
-    return 'posts.create';
-}]);
+Route::get('posts/create',['as'=> 'posts.create','uses' =>
+'PostsController@create']);
 
 Route::delete('posts/{id}',['as'=> 'posts.destory',function () {
     return 'posts.destory';
 }]);
 
-Route::patch('post/{id}',['as'=> 'posts.update',function(){
+Route::patch('posts/{id}',['as'=> 'posts.update',function(){
 	return 'posts.update';
 }]);
 
-Route::get('post/{id}',['as'=> 'posts.show',function () {
-    return 'posts.show';
-}]);
+Route::get('posts/{id}',['as'=> 'posts.show','uses' =>
+'PostsController@show'
+]);
 
-Route::post('post/{id}/comment',['as'=> 'posts.comment',function () {
+Route::post('posts/{id}/comment',['as'=> 'posts.comment',function () {
     return 'posts.comment';
 }]);
 
-Route::get('post/{id}/edit',['as'=> 'posts.edit',function () {
-    return 'posts.edit';
-}]);
-
-/*
-	Route::get('/about',['as'=> 'about.index',function () {
-	    return 'about.index';
-	}]);
-
-	Route::get('/hot',['as'=> 'post.hot',function () {
-	    return 'post.hot';
-	}]);
-
-	Route::get('random',['as'=> 'post.random',function () {
-	    return 'post.random';
-	}]);
-
-	Route::post('posts',['as'=> 'posts.store',function () {
-	    return 'posts.store';
-	}]);
-
-	Route::get('posts',['as'=> 'posts.index',function () {
-	    return 'posts.index';
-	}]);
-
-	Route::get('posts/create',['as'=> 'posts.create',function () {
-	    return 'posts.create';
-	}]);
-
-	Route::delete('posts/{id}',['as'=> 'posts.destory',function () {
-	    return 'posts.destory';
-	}]);
-
-	Route::patch('post/{id}',['as'=> 'posts.update',function(){
-		return 'posts.update';
-	}]);
-
-	Route::get('post/{id}',['as'=> 'posts.show',function () {
-	    return 'posts.show';
-	}]);
-
-	Route::post('post/{id}/comment',['as'=> 'posts.comment',function () {
-	    return 'posts.comment';
-	}]);
-
-	Route::get('post/{id}/edit',['as'=> 'posts.edit',function () {
-	    return 'posts.edit';
-	}]);
-*/
+Route::get('posts/{id}/edit',['as'=> 'posts.edit','uses' =>
+'PostsController@edit'
+]);

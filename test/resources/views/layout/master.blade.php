@@ -10,7 +10,7 @@
 	    <meta name="author" content="">
 		<title>Clean Blog -@yield('title')</title>
 		<!-- Bootstrap Core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet">
+	    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 	    <!-- Custom CSS -->
 	    <link href="css/clean-blog.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
 		                        <a href="{{route('home.index')}}">Home</a>
 		                    </li>
 		                    <li>
-		                        <a href="about.php">About</a>
+		                        <a href="{{route('about.index')}}">About</a>
 		                    </li>
 		                    <li>
 		                        <a href="post.php">Sample Post</a>
