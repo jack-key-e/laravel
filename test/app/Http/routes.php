@@ -58,3 +58,11 @@ Route::post('posts/{id}/comment',['as'=> 'posts.comment',function () {
 Route::get('posts/{id}/edit',['as'=> 'posts.edit','uses' =>
 'PostsController@edit'
 ]);
+
+
+/*Route::get('comshow',['as'=> 'coms.edit','uses' =>
+'PostsController@onelist'
+]);*/
+
+Route::resource('comshow','PostsController@onelist'
+,['names' => ['store' => 'coms.edit']]);
