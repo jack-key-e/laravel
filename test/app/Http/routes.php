@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/',['as'=> 'home.index',function () {
-	$data =['jpg'=>'home-bg.jpg)'];
-    return view('index',$data);
-}]);
+Route::get('/',['as'=> 'home.index','uses' =>
+'PostsController@indexpost']);
 
 Route::get('/about',['as'=> 'about.index',function () {
     return view('about.index');
@@ -58,11 +56,6 @@ Route::post('posts/{id}/comment',['as'=> 'posts.comment',function () {
 Route::get('posts/{id}/edit',['as'=> 'posts.edit','uses' =>
 'PostsController@edit'
 ]);
-
-
-/*Route::get('comshow',['as'=> 'coms.edit','uses' =>
-'PostsController@onelist'
-]);*/
 
 Route::resource('comshow','PostsController@onelist'
 ,['names' => ['store' => 'coms.edit']]);

@@ -14,23 +14,30 @@ class PostsController extends Controller
     	return view('posts.index',$data);
     }
 
+    public function indexpost(){
+    	$posts =\App\Post::all();
+    	return view('index');
+    }
+
     public function show($id){
-    	$post = \App\post::find($id);
-    	$data = compact('post');
-    	return view('posts.index',$data);
+    	$posts = \App\post::find($id);
+    	$data = compact('posts');
+    	return view('post.index',$data);
     }
 
     public function onelist(Request $request){
-    	if(!isset($request)){
+    	if(!isset($_POST["text"])){
     		echo "out";
+    		if(isset($_GET["tex"]))
+    			echo '<br>'.$_GET["tex"];
     		$data = ['letter' => 'no data'];
     		return view('comshow',$data);
     	}else{
     		echo "in";
     		if(isset($_POST["text"]))
-    		echo $_POST["text"] ;
-    		$data = compact('request');
-    		return view('comshow',$data);
+    		echo '<br>'.$_POST["text"];
+
+    		return view('comshow');
     	}
     }
 }
