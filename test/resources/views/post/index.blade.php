@@ -21,8 +21,8 @@
         <h2>{{ $posts -> title }}</h2>
         <h3>{{ $posts -> sub_title }}</h3>
         <p>{!! $posts -> content !!}</p>
+    </div>
     <!-- Footer -->
     @include('layout.partials.footer')
-</body>
 
 </html>

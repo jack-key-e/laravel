@@ -9,14 +9,21 @@ use App\Http\Requests;
 class PostsController extends Controller
 {
     public function index(){
-    	$posts = \App\Post::all();
-    	$data = compact('posts');
+        if (!isset($_GET['p'])) {
+            $page = 1;
+        }else{
+            $page = $_GET['p'];
+        }
+        $Postcounter = \App\Post::count();
+    	$posts = \App\Post::OrderBy('id','DESC')->forpage($page,5)->get();
+    	$data = compact('posts','Postcounter','page');
     	return view('posts.index',$data);
     }
 
     public function indexpost(){
-    	$posts =\App\Post::all();
-    	return view('index');
+    	$posts =\App\Post::OrderBy('id','DESC')->Limit(5)->get();
+        $data = compact('posts');
+    	return view('index',$data);
     }
 
     public function show($id){
