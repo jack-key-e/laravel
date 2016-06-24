@@ -8,6 +8,11 @@ use App\Http\Requests;
 
 class PostsController extends Controller
 {
+    
+    function __construct(){
+        
+
+    }
     public function index(){
         if (!isset($_GET['p'])) {
             $page = 1;
@@ -15,20 +20,27 @@ class PostsController extends Controller
             $page = $_GET['p'];
         }
         $Postcounter = \App\Post::count();
+        $Webname = \App\login::all();
+        $Alltitle = \App\postcontact::all();
     	$posts = \App\Post::OrderBy('id','DESC')->forpage($page,5)->get();
-    	$data = compact('posts','Postcounter','page');
+    	$data = compact('posts','Postcounter','page'
+        ,'Alltitle','Webname');
     	return view('posts.index',$data);
     }
 
     public function indexpost(){
     	$posts =\App\Post::OrderBy('id','DESC')->Limit(5)->get();
-        $data = compact('posts');
+        $Webname = \App\login::all();
+        $Alltitle = \App\indexabot::all();
+        $data = compact('posts','Alltitle','Webname');
     	return view('index',$data);
     }
 
     public function show($id){
     	$posts = \App\post::find($id);
-    	$data = compact('posts');
+        $Alltitle = \App\postcontact::all();
+        $Webname = \App\login::all();
+    	$data = compact('posts','Alltitle','Webname');
     	return view('post.index',$data);
     }
 
@@ -46,5 +58,19 @@ class PostsController extends Controller
 
     		return view('comshow');
     	}
+    }
+
+    public function about(){
+        $Alltitle = \App\indexabot::all();
+        $Webname = \App\login::all();
+        $data = compact('Alltitle','Webname');
+        return view('about.index',$data);
+    }
+
+    public function contact(){
+        $Alltitle = \App\postcontact::all();
+        $Webname = \App\login::all();
+        $data = compact('Alltitle','Webname');
+        return view('contact',$data);
     }
 }

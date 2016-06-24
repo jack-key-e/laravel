@@ -14,9 +14,8 @@
 Route::get('/',['as'=> 'home.index','uses' =>
 'PostsController@indexpost']);
 
-Route::get('/about',['as'=> 'about.index',function () {
-    return view('about.index');
-}]);
+Route::get('/about',['as'=> 'about.index','uses' =>
+'PostsController@about']);
 
 Route::get('/hot',['as'=> 'post.hot',function () {
     return 'post.hot';
@@ -59,3 +58,9 @@ Route::get('posts/{id}/edit',['as'=> 'posts.edit','uses' =>
 
 Route::resource('comshow','PostsController@onelist'
 ,['names' => ['store' => 'coms.edit']]);
+
+Route::get('contact',['as'=> 'home.contact','uses' =>
+'PostsController@contact']);
+
+Route::resource('admin','LoginController@login'
+,['names'=>['store'=>'home.admin']]);

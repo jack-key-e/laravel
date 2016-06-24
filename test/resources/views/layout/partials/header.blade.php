@@ -39,7 +39,9 @@
 		                    <span class="icon-bar"></span>
 		                    <span class="icon-bar"></span>
 		                </button>
-		                <a class="navbar-brand" href="{{route('home.index')}}">Jack-key-e</a>
+		                @foreach($Webname as $name)
+		                <a class="navbar-brand" href="{{route('home.index')}}">{{$name->WebOwnName}}</a>
+		            	@endforeach
 		            </div>
 
 		            <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,7 +57,7 @@
 		                        <a href="{{route('posts.index')}}">Sample Post</a>
 		                    </li>
 		                    <li>
-		                        <a href="">Contact</a>
+		                        <a href="{{route('home.contact')}}">Contact</a>
 		                    </li>
 		                </ul>
 		            </div>
