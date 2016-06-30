@@ -63,4 +63,11 @@ Route::get('contact',['as'=> 'home.contact','uses' =>
 'PostsController@contact']);
 
 Route::resource('admin','LoginController@login'
-,['names'=>['store'=>'home.admin']]);
+,['names'=>['store'=>'home.admin']
+]);
+
+Route::get('admintools',['as'=> 'admintools.index','uses' =>
+'LoginController@setting']);
+
+Route::get('admintools/update',['as'=> 'admintools.update','uses' =>
+'LoginController@update']);

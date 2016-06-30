@@ -16,4 +16,5 @@ class login extends Model
 	    	'FooterGithub'
 	    ];
 	    //protected $guarded=['id','password'];
+	public $timestamps = false;
 }
