@@ -66,8 +66,21 @@ Route::resource('admin','LoginController@login'
 ,['names'=>['store'=>'home.admin']
 ]);
 
+Route::get('admintools/logout',['as'=> 'admintools.logout','uses' =>
+'LoginController@logout']);
+
 Route::get('admintools',['as'=> 'admintools.index','uses' =>
 'LoginController@setting']);
 
 Route::get('admintools/update',['as'=> 'admintools.update','uses' =>
 'LoginController@update']);
+
+Route::resource('admintools/about','LoginController@about'
+,['names'=>['store'=>'admintools.about']
+]);
+
+Route::get('admintools/index',['as'=> 'admintools.indexset','uses' =>
+'LoginController@indexset']);
+
+Route::get('admintools/contact',['as'=> 'admintools.contact','uses' =>
+'LoginController@contact']);

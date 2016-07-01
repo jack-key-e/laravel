@@ -6,7 +6,7 @@
                     <div class="page-heading">
                         <h1>後台頁面</h1>
                         <hr class="small">
-                        <span class="subheading">網站設定</span>
+                        <span class="subheading">index設定</span>
                     </div>
                 </div>
             </div>
@@ -15,34 +15,20 @@
  <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h2>臉書,推特,github設定頁面</h2>
-                @foreach ($Webname as $data)
-                <form name="sentMessage" action="{{route('admintools.update')}}" novalidate>
+                <h2>about設定頁面</h2>
+                @foreach($index as $data)
+                <form name="sentMessage" action="{{route('admintools.indexset')}}" novalidate>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>網站名稱</label>
-                            <input type="text" name="WebName" class="form-control" placeholder="網站名稱:{{$data->WebOwnName}}">
+                            <label>index標題</label>
+                            <input type="text" name="IndexTitle" class="form-control" placeholder="index標題:{{$data->IndexTitle}}">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>facebook網址</label>
-                            <input type="text" name="FacebookId" class="form-control" placeholder="facebook網址:{{$data->FooterFacebook}}" >
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>twitter網址</label>
-                            <input type="text" name="TwitterId" class="form-control" placeholder="Twitter網址:{{$data->FooterTwitter}}" >
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>github網址</label>
-                            <input type="text" name="GithubId" class="form-control" placeholder="Github網址:{{$data->FooterGithub}}" >
+                            <label>index副標題</label>
+                            <input type="text" name="IndexSubTitle" class="form-control" placeholder="index副標題:{{$data->IndexSubTitle}}" >
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>

@@ -39,26 +39,34 @@
 		                    <span class="icon-bar"></span>
 		                    <span class="icon-bar"></span>
 		                </button>
-		                @foreach($Web as $name)
+		                @foreach($Webname as $name)
 		                <a class="navbar-brand" href="{{route('admintools.index')}}">
 		                {{$name->WebOwnName}}(管理者模式)</a>
 		            	@endforeach
+		            	<a class="navbar-brand" href="
+		            	{{route('home.index')}}">
+		                回首頁</a>
+		            	<a class="navbar-brand" href="{{route('admintools.logout')}}">
+		                登出</a>
 		            </div>
 
 		            <!-- Collect the nav links, forms, and other content for toggling -->
 		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		                <ul class="nav navbar-nav navbar-right">
 		                    <li>
-		                        <a href="{{route('home.index')}}">後台頁面</a>
+		                        <a href="{{route('admintools.index')}}">網站設定</a>
 		                    </li>
 		                    <li>
-		                        <a href="{{route('about.index')}}">About設定</a>
+		                        <a href="{{route('admintools.indexset')}}">index設定</a>
+		                    </li>
+		                    <li>
+		                        <a href="{{route('admintools.about')}}">About設定</a>
 		                    </li>
 		                    <li>
 		                        <a href="{{route('posts.index')}}">Sample Post設定</a>
 		                    </li>
 		                    <li>
-		                        <a href="{{route('home.contact')}}">Contact設定</a>
+		                        <a href="{{route('admintools.contact')}}">Contact設定</a>
 		                    </li>
 		                </ul>
 		            </div>

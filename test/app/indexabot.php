@@ -15,5 +15,6 @@ class indexabot extends Model
 	    	'AboutSubTitle',
 	    	'AboutContent'
 	    ];
-	    protected $guarded=['search'];
+	protected $guarded=['search'];
+	public $timestamps = false;
 }

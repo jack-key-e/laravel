@@ -11,7 +11,9 @@ class postcontact extends Model
 	    	'PostTitle',
 	    	'PostSubTitle',
 	    	'ContactTitle',
-	    	'ContactSubTitle'
+	    	'ContactSubTitle',
+	    	'ContactContent'
 	    ];
 	    protected $guarded=['id'];
+	    public $timestamps = false;
 }
