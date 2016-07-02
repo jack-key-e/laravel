@@ -63,7 +63,7 @@
 		                        <a href="{{route('admintools.about')}}">About設定</a>
 		                    </li>
 		                    <li>
-		                        <a href="{{route('posts.index')}}">Sample Post設定</a>
+		                        <a href="{{route('admintools.postset')}}">Sample Post設定</a>
 		                    </li>
 		                    <li>
 		                        <a href="{{route('admintools.contact')}}">Contact設定</a>

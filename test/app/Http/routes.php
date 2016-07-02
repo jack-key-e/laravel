@@ -72,8 +72,12 @@ Route::get('admintools/logout',['as'=> 'admintools.logout','uses' =>
 Route::get('admintools',['as'=> 'admintools.index','uses' =>
 'LoginController@setting']);
 
-Route::get('admintools/update',['as'=> 'admintools.update','uses' =>
-'LoginController@update']);
+//Route::get('admintools/update',['as'=> 'admintools.update','uses' =>
+//'LoginController@update']);
+
+Route::resource('admintools/update','LoginController@update'
+,['names'=>['store'=>'admintools.update']
+]);
 
 Route::resource('admintools/about','LoginController@about'
 ,['names'=>['store'=>'admintools.about']
@@ -84,3 +88,17 @@ Route::get('admintools/index',['as'=> 'admintools.indexset','uses' =>
 
 Route::get('admintools/contact',['as'=> 'admintools.contact','uses' =>
 'LoginController@contact']);
+
+Route::get('admintools/postset',['as' => 'admintools.postset','uses' =>
+'LoginController@posts']);
+
+Route::get('admintools/postset/delete/{id}',['as' => 'admintools.postdel','uses' =>
+'LoginController@postsdel']);
+
+Route::resource('admintools/postset/{id}/update','LoginController@postupdate'
+,['names'=>['store'=>'postset.update']
+]);
+
+Route::resource('admintools/postset/create','LoginController@postcreate'
+,['names'=>['store'=>'postset.create']
+]);

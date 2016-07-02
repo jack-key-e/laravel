@@ -55,13 +55,61 @@
                 </form>
                 @endforeach
             </div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <h2>更換密碼</h2>
+                <form name="sent" action="{{route('admintools.update')}}" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>帳號</label>
+                            <input type="text" name="Id" class="form-control" placeholder="帳號" required>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>舊密碼</label>
+                            <input type="password" name="OldPw" class="form-control" placeholder="舊密碼" required>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>新密碼</label>
+                            <input type="password" name="Pw" class="form-control" placeholder="新密碼" required>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>新密碼</label>
+                            <input type="password" name="AgainPw" class="form-control" placeholder="新密碼" required>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <input type="submit" name="form2"class="btn btn-default" value="更改密碼">
+                        </div>
+                        @if(isset($condition))
+                            <div class="form-group col-xs-12">
+                                <div class="alert bg-danger">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <strong>{{$condition}}</strong>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                    </form>
+            </div>
         </div>
     </div>
 
     <hr>
 <!-- Footer -->
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="{{asset('js/jquery.js')}}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- Custom Theme JavaScript -->

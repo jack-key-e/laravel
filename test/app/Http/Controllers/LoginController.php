@@ -79,6 +79,7 @@ class LoginController extends Controller
             $Acountcheck = \App\login::all();
             $value = $Acountcheck->toArray();
             if ($_COOKIE['access']==$value[0]['Password']) {
+            
                if(isset($_GET['WebName'])&&!empty($_GET['WebName'])){
                 \App\login::where('num',1)
                 ->update(['WebOwnName'=>$_GET['WebName']]);
@@ -95,9 +96,36 @@ class LoginController extends Controller
                     \App\login::where('num',1)
                     ->update(['FooterGithub'=>$_GET['GithubId']]);
                 }
+                if (isset($_POST['form2'])) {
+                    if($_POST['Id']==$value[0]['Id']&&md5($_POST['OldPw'])==$value[0]['Password']){
+                        if($_POST['Pw']==$_POST['AgainPw']){
+                            $PW=\App\login::where('num',1);
+                            $pw->update(['Password'=>$_POST['Pw']]);
+                            $condition="更換成功";
+                        }else{
+                            $condition="新密碼不一置";
+                        }
+                    }else{
+                        $condition="帳號或舊密碼錯誤";
+                    }
+                }
                 $Webname = \App\login::all();
-                $data = compact('Webname');
+                $data = compact('Webname','condition');
                 return view('admintools.index',$data);
+            }
+        }
+        $url = "../admintools";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>"; 
+    }
+
+    public function acupdate(){
+        if(isset($_COOKIE['access'])){
+            $Acountcheck = \App\login::all();
+            $value = $Acountcheck->toArray();
+            if ($_COOKIE['access']==$value[0]['Password']) {
+                
             }
         }
         $url = "../admintools";
@@ -192,5 +220,119 @@ class LoginController extends Controller
         echo "<script type='text/javascript'>";
         echo "window.location.href='$url'";
         echo "</script>"; 
+    }
+
+    public function posts (){
+        if(isset($_COOKIE['access'])){
+            $Acountcheck = \App\login::all();
+            $value = $Acountcheck->toArray();
+            if ($_COOKIE['access']==$value[0]['Password']) {
+                //sql code
+                if(isset($_GET['PostTitle'])&&!empty($_GET['PostTitle'])){
+                    \App\postcontact::where('id',1)
+                    ->update(['PostTitle'=>$_GET['PostTitle']]);
+                }
+                if(isset($_GET['PostSubTitle'])&&!empty($_GET['PostSubTitle'])){
+                    \App\postcontact::where('id',1)
+                    ->update(['PostSubTitle'=>$_GET['PostSubTitle']]);
+                }
+                //sql code end
+                if (!isset($_GET['p'])) {
+                    $page = 1;
+                }else{
+                    $page = $_GET['p'];
+                }
+                $contact = \App\postcontact::all();
+                $Postcounter = \App\Post::count();
+                $Webname = \App\login::all();
+                $posts = \App\Post::OrderBy('id','DESC')->forpage($page,5)->get();
+                $data = compact('Webname','contact','posts'
+                ,'Postcounter','page');
+                return view('admintools.postset',$data);
+            }
+        }
+        $url = "../admin";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
+    }
+
+    public function postsdel($id){
+        if(isset($_COOKIE['access'])){
+            $Acountcheck = \App\login::all();
+            $value = $Acountcheck->toArray();
+            if ($_COOKIE['access']==$value[0]['Password']) {
+                //sql code
+                 \App\Post::where('id',$id)->delete();
+                //sql code end
+                $url = "../";
+                echo "<script type='text/javascript'>";
+                echo "window.location.href='$url'";
+                echo "</script>"; 
+            }
+        }
+        $url = "../../../admin";
+            echo "<script type='text/javascript'>";
+            echo "window.location.href='$url'";
+            echo "</script>";
+    }
+
+    public function postupdate($id){
+        if(isset($_COOKIE['access'])){
+            $Acountcheck = \App\login::all();
+            $value = $Acountcheck->toArray();
+            if ($_COOKIE['access']==$value[0]['Password']) {
+                if(isset($_POST['PostTitle'])&&!empty($_POST['PostTitle'])){
+                    \App\Post::find($id)
+                    ->update(['title'=>$_POST['PostTitle']]);
+                }
+                if(isset($_POST['PostSubTitle'])&&!empty($_POST['PostSubTitle'])){
+                    \App\Post::find($id)
+                    ->update(['sub_title'=>$_POST['PostSubTitle']]);
+                }
+                if(isset($_POST['PostContent'])&&!empty($_POST['PostContent'])){
+                    \App\Post::find($id)
+                    ->update(['content'=>$_POST['PostContent']]);
+                }
+
+                $posts = \App\Post::find($id);
+                $Webname = \App\login::all();
+                $data = compact('posts','Webname','id');
+                return view('admintools.postsetupdate',$data);
+            }
+        }
+        $url = "../../../admin";
+            echo "<script type='text/javascript'>";
+            echo "window.location.href='$url'";
+            echo "</script>";
+    }
+
+    public function postcreate(){
+        if(isset($_COOKIE['access'])){
+            $Acountcheck = \App\login::all();
+            $value = $Acountcheck->toArray();
+            if ($_COOKIE['access']==$value[0]['Password']) {
+                if(isset($_POST['submit'])){
+                    $content = (isset($_POST['PostContent'])) ? $_POST['PostContent'] : " " ;
+                    $posts = \App\Post::create([
+                        'title'=>$_POST['PostTitle'],
+                        'sub_title'=>$_POST['PostSubTitle'],
+                        'content'=>$_POST['PostContent'],
+                        'is_feature'=>true
+                    ]);
+                    $url = "./";
+                    echo "<script type='text/javascript'>";
+                    echo "window.location.href='$url'";
+                    echo "</script>";
+                }
+                $Webname = \App\login::all();
+                $data = compact('Webname');
+                return view('admintools.postsetcreate',$data);
+            }
+        }
+        $url = "../../../admin";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
     }
 }
