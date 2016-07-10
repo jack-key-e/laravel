@@ -30,7 +30,7 @@
                             {{ $postlist -> sub_title }}
                         </h3>
                     </a>
-                    <p>{{$postlist -> content}}</p>
+                    <p>{!!$postlist -> content!!}</p>
                 </div>
                 <hr>
     @endforeach

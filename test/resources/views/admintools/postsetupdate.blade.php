@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <input type="text"class="form-control" placeholder="文章內容:" readonly>
-                            <textarea class="form-control" rows="8" name="PostContent" >
+                            <textarea class="form-control" id="ckedit" rows="8" name="PostContent" >
                             {!! $posts -> content !!}
                             </textarea>
                             <p class="help-block text-danger"></p>
@@ -63,3 +63,4 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{asset('js/clean-blog.min.js')}}"></script>
+<script>CKEDITOR.replace('ckedit');</script>

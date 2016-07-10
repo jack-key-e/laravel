@@ -61,7 +61,9 @@
                             {{ $postlist -> sub_title }}
                         </h3>
                     </a>
-                    <p>{{$postlist -> content}}</p>
+                    <textarea id="ckedit{{$postlist -> id}}" readonly>
+                        {{$postlist -> content}}
+                    </textarea>
                     <a href="/admintools/postset/delete/{{$postlist -> id}}">
                     	<buttom class="btn btn-danger">刪除文章</buttom>
                     </a>
@@ -103,3 +105,11 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{asset('js/clean-blog.min.js')}}"></script>
+<script>
+    window.onpageshow = function(){
+       id= $('textarea').length;
+        for (var i =0; i < id; i++) {
+            CKEDITOR.replace($('textarea')[i].id);
+        } 
+    }
+</script>

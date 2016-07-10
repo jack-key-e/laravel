@@ -45,7 +45,7 @@ class PostsController extends Controller
     }
 
     public function onelist(Request $request){
-    	if(!isset($_POST["text"])){
+    	if(!$request->has('text')){
     		echo "out";
     		if(isset($_GET["tex"]))
     			echo '<br>'.$_GET["tex"];
@@ -54,8 +54,8 @@ class PostsController extends Controller
     	}else{
     		echo "in";
     		if(isset($_POST["text"]))
-    		echo '<br>'.$_POST["text"];
-
+            $input = $request->only('text');
+            echo $input['text'];
     		return view('comshow');
     	}
     }

@@ -68,7 +68,7 @@ class LoginController extends Controller
                 return view('admintools.index',$data);
             }
         }
-        $url = "../admin";
+        $url = "/admin";
         echo "<script type='text/javascript'>";
         echo "window.location.href='$url'";
         echo "</script>"; 
@@ -251,7 +251,7 @@ class LoginController extends Controller
                 return view('admintools.postset',$data);
             }
         }
-        $url = "../admin";
+        $url = "/admin";
         echo "<script type='text/javascript'>";
         echo "window.location.href='$url'";
         echo "</script>";
@@ -271,7 +271,7 @@ class LoginController extends Controller
                 echo "</script>"; 
             }
         }
-        $url = "../../../admin";
+        $url = "/admin";
             echo "<script type='text/javascript'>";
             echo "window.location.href='$url'";
             echo "</script>";
@@ -301,7 +301,7 @@ class LoginController extends Controller
                 return view('admintools.postsetupdate',$data);
             }
         }
-        $url = "../../../admin";
+        $url = "/admin";
             echo "<script type='text/javascript'>";
             echo "window.location.href='$url'";
             echo "</script>";
@@ -330,7 +330,7 @@ class LoginController extends Controller
                 return view('admintools.postsetcreate',$data);
             }
         }
-        $url = "../../../admin";
+        $url = "/admin";
         echo "<script type='text/javascript'>";
         echo "window.location.href='$url'";
         echo "</script>";
